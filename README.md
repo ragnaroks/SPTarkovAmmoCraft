@@ -5,7 +5,14 @@ low penetration ammos can be craft to high penetration ammos.
 
 they are a lot of recipes, so i decide to put them in **heating** area, and you may want filter them by name like `9x19` or `7.62x39`.
 
-### requirements
+# exchange rules
+```typescript
+const lowAmmoCount = highAmmo.Count * highAmmo.Damage * highAmmo.Penetration / lowAmmo.Penetration / lowAmmo.Damage;
+
+const gunpowderCount = round(highAmmo.Penetration / 15);
+```
+
+# requirements
 - area **heating** level 1
 - area **workbench** level 1
 

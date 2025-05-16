@@ -17,7 +17,6 @@ export default function addCustomRecipe_20gb(logger: ILogger,tables: IDatabaseTa
     return;
   }
   const productionCount = productTemplate._props.StackMaxSize * 4;
-  const gunpowderCount = Math.round(productTemplate._props.PenetrationPower/15);
   const totalValue = productTemplate._props.PenetrationPower * productTemplate._props.Damage * productionCount * productTemplate._props.ProjectileCount;
   for (const id of stuffsTemplateArray) {
     const template = tables.templates.items[id] || null;
@@ -34,28 +33,14 @@ export default function addCustomRecipe_20gb(logger: ILogger,tables: IDatabaseTa
           templateId: ItemTpl.BARTER_TOOLSET,
           type: 'Tool'
         },{
-          count: gunpowderCount,
+          count: Math.round(productTemplate._props.PenetrationPower / 10),
           isEncoded: false,
           isFunctional: false,
           isSpawnedInSession: false,
           templateId: ItemTpl.BARTER_GUNPOWDER_EAGLE,
           type: 'Item'
         },{
-          count: gunpowderCount,
-          isEncoded: false,
-          isFunctional: false,
-          isSpawnedInSession: false,
-          templateId: ItemTpl.BARTER_GUNPOWDER_HAWK,
-          type: 'Item'
-        },{
-          count: gunpowderCount,
-          isEncoded: false,
-          isFunctional: false,
-          isSpawnedInSession: false,
-          templateId: ItemTpl.BARTER_GUNPOWDER_KITE,
-          type: 'Item'
-        },{
-          count: Math.floor(totalValue / template._props.PenetrationPower / template._props.Damage / productTemplate._props.ProjectileCount),
+          count: Math.round(totalValue / template._props.PenetrationPower / template._props.Damage / productTemplate._props.ProjectileCount),
           isEncoded: false,
           isFunctional: false,
           isSpawnedInSession: false,
